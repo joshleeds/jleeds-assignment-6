@@ -28,10 +28,10 @@
 
     {% if plot1 and plot2 %}
         <h2>Generated Plot</h2>
-        <img src="{{ url_for('static', filename='plot1.png') }}" alt="Regression Plot" style="width: 600px;">
+        <img src="{{ url_for('static', filename='plot1.png') }}?{{ unique_id }}" alt="Regression Plot" style="width: 600px;">
 
         <h2>Histogram of Slopes and Intercepts</h2>
-        <img src="{{ url_for('static', filename='plot2.png') }}" alt="Histograms" style="width: 600px;">
+        <img src="{{ url_for('static', filename='plot2.png') }}?{{ unique_id }}" alt="Histograms" style="width: 600px;">
 
         <p>Proportion of slopes more extreme than calculated slope: {{ slope_extreme | round(2) }}</p>
         <p>Proportion of intercepts more extreme than calculated intercept: {{ intercept_extreme | round(2) }}</p>

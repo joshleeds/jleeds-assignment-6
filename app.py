@@ -6,6 +6,8 @@ import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
 import io
 import base64
+import random
+
 
 app = Flask(__name__)
 
@@ -95,11 +97,14 @@ def index():
         sigma2 = float(request.form["sigma2"])
         S = int(request.form["S"])
 
+        unique_id = random.randint(1, 1000000)
+
         # Generate plots and results
         plot1, plot2, slope_extreme, intercept_extreme = generate_plots(N, mu, sigma2, S)
 
         return render_template("index.html", plot1=plot1, plot2=plot2,
-                               slope_extreme=slope_extreme, intercept_extreme=intercept_extreme)
+                               slope_extreme=slope_extreme, intercept_extreme=intercept_extreme,
+                               unique_id=unique_id)
 
     return render_template("index.html")
 
